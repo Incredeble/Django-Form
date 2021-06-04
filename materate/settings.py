@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-c@+u6f0xozk%xdjt-tnn^hg0$*6hgc%wt8uyc4wb9p^wfm9&=%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -123,8 +123,12 @@ LOGIN_REDIRECT_URL='dashboard'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-STATIC_ROOT  =   os.path.join(BASE_DIR, 'staticfiles')
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new!
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Extra lookup directories for collectstatic to find static files
